@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import {Component} from 'react'
 
 class Nosupported extends Component{
 
@@ -7,4 +7,4 @@ class Nosupported extends Component{
     }
 }
 
-export default Nosupported
+export default Nosupported;

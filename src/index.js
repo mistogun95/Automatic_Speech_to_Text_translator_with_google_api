@@ -1,25 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App2 from './App2';
 import Nosupported from './no_supported'
 import * as serviceWorker from './serviceWorker';
-import is from 'is_js'
 
-if(is.chrome())
+if('webkitSpeechRecognition' in window){
+  console.log('Chrome')
   ReactDOM.render(
     <React.StrictMode>
-      <App />
+      <App2 />
     </React.StrictMode>,
     document.getElementById('root')
-  );
-else
+  );}
+else{
+  console.log('not chrome')
   ReactDOM.render(
     <React.StrictMode>
       <Nosupported />
     </React.StrictMode>,
     document.getElementById('root')
-  );
+  );}
+
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

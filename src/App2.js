@@ -3,20 +3,8 @@ import React, {Component} from 'react';
 
 console.log('import');
 
-/* to implement speech recognition we will make use of the SpeechRecognition api. this will work only on crhomium browser */
-const SpeechRecognition = window.webkitSpeechRecognition
 
-const recognition = new SpeechRecognition()
-
-const tr = require("googletrans").default
-
-/* we set interim resoults on true because if we set it to false it will return after the user finisched to speak */
-recognition.continous = true
-recognition.interimResoults = true
-recognition.lang = 'it-IT'
-
-
-class App extends Component{
+class App2 extends Component{
   
   constructor(){
     super()
@@ -34,6 +22,16 @@ class App extends Component{
   }
 
   handleListen(){
+    var SpeechRecognition = window.webkitSpeechRecognition
+
+    var recognition = new SpeechRecognition()
+    
+    var tr = require("googletrans").default
+    
+    /* we set interim resoults on true because if we set it to false it will return after the user finisched to speak */
+    recognition.continous = true
+    recognition.interimResoults = true
+    recognition.lang = 'it-IT'
     console.log('listening?', this.state.listening)
 
     /* this tells our speech recognition to start listening */
@@ -111,7 +109,7 @@ class App extends Component{
   }
 }
 
-export default App;
+export default App2;
 
 
 const styles = {
