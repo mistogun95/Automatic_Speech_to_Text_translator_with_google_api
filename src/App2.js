@@ -4,8 +4,6 @@ import React, { Component } from 'react'
 class App2 extends Component{
 
   recognitionLogic(){
-    if(!('webkitSpeechRecognition' in window))
-      return 'browser was not supported'
 
     const speechRecogntion = window.webkitSpeechRecognition;
     const tr = require("googletrans").default
@@ -50,12 +48,15 @@ class App2 extends Component{
   }
 
   render(){
-    return (
-      <div>
-        <button onClick={this.recognitionLogic}>Start recognition</button>
-        <div id='words'></div>
-      </div>
-    );
+    if(!('webkitSpeechRecognition' in window))
+      return 'browser was not supported'
+    else
+      return (
+        <div>
+          <button onClick={this.recognitionLogic}>Start recognition</button>
+          <div id='words'></div>
+        </div>
+      );
   }
 
 }
