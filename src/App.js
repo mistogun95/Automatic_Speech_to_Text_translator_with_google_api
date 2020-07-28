@@ -4,7 +4,7 @@ import React, {Component} from 'react';
 console.log('import');
 
 /* to implement speech recognition we will make use of the SpeechRecognition api. this will work only on crhomium browser */
-const SpeechRecognition = window.webkitSpeechRecognition
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition || null
 
 const recognition = new SpeechRecognition()
 
