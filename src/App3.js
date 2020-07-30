@@ -11,25 +11,28 @@ class App3 extends Component{
 
         const speechRecogntion = window.webkitSpeechRecognition;
         const tr = require("googletrans").default
+        var transcript;
 
         let p = document.createElement('p');
         document.getElementById('words').appendChild(p);
 
         const recognition = new speechRecogntion();
         recognition.interimResults = true;
-        recognition.lang = 'it-IT';
+        //recognition.lang = 'it-IT';
 
         recognition.onstart = function() {
             console.log('recognition start')
         }
 
+        recognition.addEventListener('result', e => {
+            transcript = Array.from(e.results)
+                .map(result => result[0])
+                .map(result => result.transcript)
+                .join('')
+            console.log(transcript)
+        })
+
         recognition.onspeechend = function(){
-            recognition.stop();
-        }
-
-        recognition.onresult = function(event){
-            var transcript = event.results[0][0].transcript;
-
             tr(transcript, {to: 'en'})
                 .then(function (result){
                     p.textContent = result.text;
@@ -39,7 +42,9 @@ class App3 extends Component{
                 .catch(function (error) {
                     console.log(error)
             });
+            recognition.stop();
         }
+
 
         recognition.start();
 
